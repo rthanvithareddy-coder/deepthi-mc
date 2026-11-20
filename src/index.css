@@ -1,0 +1,108 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #060b18;
+    color: #f1f5f9;
+  }
+
+  body {
+    background-color: #060b18;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(34, 211, 238, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 85% 20%, rgba(139, 92, 246, 0.07), transparent);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes gsmDashFlow {
+  0% {
+    stroke-dashoffset: 36;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gsmDashReverse {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 36;
+  }
+}
+
+@keyframes gsmRingWave {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+.animate-signal-forward {
+  stroke-dasharray: 8 10;
+  animation: gsmDashFlow 0.75s linear infinite;
+}
+
+.animate-signal-reverse {
+  stroke-dasharray: 8 10;
+  animation: gsmDashReverse 0.75s linear infinite;
+}
+
+.animate-signal-ambient {
+  stroke-dasharray: 4 14;
+  animation: gsmDashFlow 1.6s linear infinite;
+}
+
+.animate-ring-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: gsmRingWave 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-signal-forward,
+  .animate-signal-reverse,
+  .animate-signal-ambient,
+  .animate-ring-wave {
+    animation: none;
+  }
+}
+
+/* Custom sleek dark scrollbar for diagram and logs */
+.gsm-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.gsm-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 9999px;
+}
+
+.gsm-scroll::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.85);
+  border-radius: 9999px;
+}
+
+.gsm-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.5);
+}

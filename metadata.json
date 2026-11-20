@@ -1,0 +1,8 @@
+{
+  "name": "GSM Network Architecture & Call Flow Simulator",
+  "description": "Interactive GSM telecom network architecture visualizer and real-time 12-step mobile call flow simulator with failure scenarios and PWA support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
